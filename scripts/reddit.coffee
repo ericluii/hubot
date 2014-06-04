@@ -25,8 +25,8 @@ module.exports = (robot)->
       message.send text
 
   lookup_reddit = (message, response_handler)->
-    top     = parseInt message.match[3]
-    reddit  = "r/" + message.match[2] + ".json"
+    top     = parseInt message.match[2]
+    reddit  = "r/" + message.match[1] + ".json"
 
     location  = lookup_site + reddit
 
