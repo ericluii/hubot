@@ -8,14 +8,14 @@
 #   None
 #
 # Commands:
-#   :google <query> - Googles <query> & returns 1st result's URL
+#   :(google|g|search) <query> - Googles <query> & returns 1st result's URL
 #
 # Author:
 #   searls
 
 module.exports = (robot) ->
-  robot.hear /:(google) (.*)/i, (msg) ->
-    googleMe msg, msg.match[3], (url) ->
+  robot.hear /:(google|g|search) (.*)/i, (msg) ->
+    googleMe msg, msg.match[2], (url) ->
       msg.send url
 
 googleMe = (msg, query, cb) ->
