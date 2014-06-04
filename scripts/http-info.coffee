@@ -11,7 +11,6 @@
 #   HUBOT_HTTP_INFO_IGNORE_DESC - Optional boolean indicating whether a site's meta description should be ignored
 #
 # Commands:
-#   http(s)://<site> - prints the title and meta description for sites linked.
 #
 # Author:
 #   ajacksified

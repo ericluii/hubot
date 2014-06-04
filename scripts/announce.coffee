@@ -8,9 +8,9 @@
 #   HUBOT_ANNOUNCE_ROOMS - comma-separated list of rooms
 #
 # Commands:
-#   hubot announce "<message>" - Sends a message to all hubot rooms.
-#   hubot announce downtime for "<service>" starting <timeframe> - Syntactic sugar for announcing downtime commencement
-#   hubot announce downtime complete for "<service>" - Syntactic sugar for announcing downtime completion
+#   :announce "<message>" - Sends a message to all hubot rooms.
+#   :announce downtime for "<service>" starting <timeframe> - Syntactic sugar for announcing downtime commencement
+#   :announce downtime complete for "<service>" - Syntactic sugar for announcing downtime completion
 #
 # Author:
 #   Morgan Delagrange
@@ -25,12 +25,12 @@ module.exports = (robot) ->
   else
     allRooms = []
 
-  robot.respond /announce "(.*)"/i, (msg) ->
+  robot.hear /:announce "(.*)"/i, (msg) ->
     announcement = msg.match[1]
     for room in allRooms
       robot.messageRoom room, announcement
 
-  robot.respond /announce downtime for "(.*)" starting (.*)/i, (msg) ->
+  robot.hear /:announce downtime for "(.*)" starting (.*)/i, (msg) ->
     user = msg.message.user
     service = msg.match[1]
     startTime = msg.match[2]
@@ -42,7 +42,7 @@ module.exports = (robot) ->
       robot.messageRoom room, message...
     msg.reply "Don't forget to pause monitoring for this service."
 
-  robot.respond /announce downtime complete for "(.*)"/i, (msg) ->
+  robot.hear /:announce downtime complete for "(.*)"/i, (msg) ->
     service = msg.match[1]
     for room in allRooms
       robot.messageRoom room, 

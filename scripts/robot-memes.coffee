@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot robot - mention the word robot to hubot and he responds with a robot-oriented meme
+#   robot - mention the word robot to hubot and he responds with a robot-oriented meme
 #
 # Author:
 #   jrob00
@@ -37,5 +37,5 @@ robot_memes = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /(.*)(robot|robawt)/i, (msg) ->
+  robot.hear /(.*)(robot|robawt)/i, (msg) ->
 	    msg.send msg.random robot_memes

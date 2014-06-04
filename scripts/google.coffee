@@ -8,13 +8,13 @@
 #   None
 #
 # Commands:
-#   hubot google me <query> - Googles <query> & returns 1st result's URL
+#   :google <query> - Googles <query> & returns 1st result's URL
 #
 # Author:
 #   searls
 
 module.exports = (robot) ->
-  robot.respond /(google)( me)? (.*)/i, (msg) ->
+  robot.hear /:(google) (.*)/i, (msg) ->
     googleMe msg, msg.match[3], (url) ->
       msg.send url
 

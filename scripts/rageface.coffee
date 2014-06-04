@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot rage <tag> - Send a rageface for a given tag, if no tag is given, one will be chosen at random
+#   rage <tag> - Send a rageface for a given tag, if no tag is given, one will be chosen at random
 #
 # Author:
 #   brianmichel
@@ -29,7 +29,7 @@ emotions = [
 	]
 
 module.exports = (robot) ->
-	robot.respond /(rage)( .*)?/i, (msg) ->
+	robot.hear /(rage)( .*)?/i, (msg) ->
 		tag = if msg.match[2] then msg.match[2] else msg.random emotions
 		rageFacesCall msg, tag, (image_url) ->
 			msg.send image_url

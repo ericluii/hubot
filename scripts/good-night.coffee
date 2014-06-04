@@ -8,7 +8,6 @@
 #   None
 #
 # Commands:
-#   good night
 #
 # Author:
 #   noahhendrix
@@ -37,5 +36,5 @@ ways_to_say_good_night = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /(good night|bye|nighty night)/i, (msg) ->
+  robot.hear /(good night|bye|nighty night|goodnight|ttyl|ttfn|tootles|night)/i, (msg) ->
     msg.send msg.random ways_to_say_good_night

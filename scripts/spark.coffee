@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot spark me [1,2,3,4,5,6,7,3] - ouputs a spark rendered graph
+#   :spark [1,2,3,4,5,6,7,3] - ouputs a spark rendered graph
 #
 # Author:
 #   nesQuick
@@ -16,5 +16,5 @@
 spark = require('textspark')
 
 module.exports = (robot) ->
-  robot.respond /spark me (.*)/i, (msg) ->
+  robot.hear /:spark (.*)/i, (msg) ->
     msg.send spark JSON.parse msg.match[1]

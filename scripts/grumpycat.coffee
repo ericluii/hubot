@@ -9,8 +9,8 @@
 #   None
 #
 # Commands:
-#   hubot grumpycat me - Receive a Grumpy Cat
-#   hubot grumpycat bomb N - get N Grumpy Cats
+#   :grumpycat - Receive a Grumpy Cat
+#   :grumpycat bomb N - get N Grumpy Cats
 #
 # Author:
 #   trey
@@ -42,10 +42,10 @@ cats = [
 ]
 
 module.exports = (robot) ->
-  robot.respond /grumpycat me/i, (msg) ->
+  robot.hear /:grumpycat/i, (msg) ->
     msg.send cats[Math.floor(Math.random()*cats.length)]
 
-  robot.respond /grumpycat bomb( (\d+))?/i, (msg) ->
+  robot.hear /:grumpycat bomb( (\d+))?/i, (msg) ->
     count = msg.match[2] || 5
     for i in [1..count] by 1
       msg.send cats[Math.floor(Math.random()*cats.length)]

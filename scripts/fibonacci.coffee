@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   fibonacci me <integer> - Calculate Nth Fibonacci number
+#   :fibonacci <integer> - Calculate Nth Fibonacci number
 #
 # Author:
 #   ckdake
@@ -36,5 +36,5 @@ divmodBasic = (x, y) ->
   return [(q = Math.floor(x/y)), (r = if x < y then x else x % y)]
 
 module.exports = (robot) ->
-  robot.hear /fibonacci me (\d+)/i, (msg) ->
+  robot.hear /:fibonacci (\d+)/i, (msg) ->
     msg.send fibFast(msg.match[1]).toString()

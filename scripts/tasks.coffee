@@ -8,9 +8,9 @@
 #   None
 #
 # Commands:
-#   hubot task add <task> - Add a task
-#   hubot task list tasks - List the tasks
-#   hubot task delete <task number> - Delete a task
+#   :task add <task> - Add a task
+#   :task list tasks - List the tasks
+#   :task delete <task number> - Delete a task
 #
 # Author:
 #   Crofty
@@ -40,11 +40,11 @@ class Tasks
 module.exports = (robot) ->
   tasks = new Tasks robot
 
-  robot.respond /(task add|add task) (.+?)$/i, (msg) ->
+  robot.hear /(:task add|:add task) (.+?)$/i, (msg) ->
     task = tasks.add msg.match[2]
     msg.send "Task added: ##{task.num} - #{task.task}"
 
-  robot.respond /(task list|list tasks)/i, (msg) ->
+  robot.hear /(:task list|:list tasks)/i, (msg) ->
     if tasks.all().length > 0
       response = ""
       for task, num in tasks.all()
@@ -53,7 +53,7 @@ module.exports = (robot) ->
     else
       msg.send "There are no tasks"
 
-  robot.respond /(task delete|delete task) #?(\d+)/i, (msg) ->
+  robot.hear /(:task delete|:delete task) #?(\d+)/i, (msg) ->
     taskNum = msg.match[2]
     task = tasks.deleteByNumber taskNum
     msg.send "Task deleted: ##{task.num} - #{task.task}"

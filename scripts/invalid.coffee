@@ -8,7 +8,6 @@
 #   None
 #
 # Commands:
-#   invalid arg - supply an important counter-point to questionable arguments
 #
 # Author:
 #   alexdean
@@ -38,5 +37,5 @@ invalids = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /invalid ?arg/i, (msg) ->
+  robot.hear /invalid ?arguement/i, (msg) ->
     msg.send msg.random invalids

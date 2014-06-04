@@ -8,9 +8,7 @@
 #   None
 #
 # Commands:
-#   http://replygif.net/<id> - Embeds image from ReplyGif with that id.
-#   hubot replygif <keyword> - Embeds random ReplyGif with the keyword.
-#   hubot replygif me <keyword> - Same as `hubot replygif <keyword>`.
+#   :replygif <keyword> - Embeds random ReplyGif with the keyword.
 #
 # Notes:
 #   None
@@ -27,12 +25,12 @@ module.exports = (robot) ->
     msg.send "http://replygif.net/i/#{id}#.gif"
 
   # Listen for a command to look up a ReplyGif by ID.
-  robot.respond /replygif( me)? (\d+)/i, (msg) ->
+  robot.hear /:replygif( me)? (\d+)/i, (msg) ->
     id = msg.match[2]
     msg.send "http://replygif.net/i/#{id}#.gif"
 
   # Listen for a command to look up a ReplyGif by tag.
-  robot.respond /replygif( me)? (\D+)/i, (msg) ->
+  robot.hear /:replygif( me)? (\D+)/i, (msg) ->
     replyGifByTag(msg, msg.match[2])
 
 replyGifByTag = (msg, tag) ->

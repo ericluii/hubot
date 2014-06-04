@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot email <user@email.com> -s <subject> -m <message> - Sends email with the <subject> <message> to address <user@email.com>
+#   :email <user@email.com> -s <subject> -m <message> - Sends email with the <subject> <message> to address <user@email.com>
 #
 # Author:
 #   earlonrails
@@ -30,6 +30,6 @@ module.exports = (robot) ->
     p.stdin.write "#{msg}\n"
     p.stdin.end()
 
-  robot.respond /email (.*) -s (.*) -m (.*)/i, (msg) ->
+  robot.hear /:email (.*) -s (.*) -m (.*)/i, (msg) ->
     sendEmail msg.match[1].split(" "), msg.match[2], msg.match[3], msg.message.user.id
     msg.send "email sent"

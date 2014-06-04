@@ -1,8 +1,8 @@
 #---------------- HUBOT CONFIG -----------------------------------
 
-export HUBOT_HIPCHAT_JID="122146_902760@chat.hipchat.com"
-export HUBOT_HIPCHAT_PASSWORD="kcfdev"
-export HUBOT_AUTH_ADMIN="c2c1e6f8443d74914cac7a358b9318"
+export HUBOT_HIPCHAT_JID=""
+export HUBOT_HIPCHAT_PASSWORD=""
+export HUBOT_AUTH_ADMIN=""
 
 export HUBOT_ADAPTER="hipchat"
 export HUBOT_PATH="/home/ubuntu/hubot"

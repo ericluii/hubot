@@ -8,13 +8,13 @@
 #   None
 #
 # Commands:
-#   hubot fml - A random message from fmylife.com
+#   :fml - A random message from fmylife.com
 #
 # Author:
 #   artfuldodger
 
 module.exports = (robot) ->
-  robot.respond /fml/i, (msg) ->
+  robot.hear /:fml/i, (msg) ->
     fml msg
 
 fml = (msg) ->

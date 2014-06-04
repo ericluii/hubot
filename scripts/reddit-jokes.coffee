@@ -8,14 +8,14 @@
 #   None
 #
 # Commands:
-#   hubot joke me - Pull a random joke from /r/jokes
+#   :joke- Pull a random joke from /r/jokes
 #
 # Author:
 #   tombell
 
 module.exports = (robot) ->
 
-  robot.respond /joke me/i, (msg) ->
+  robot.hear /:joke/i, (msg) ->
     msg.http('http://www.reddit.com/r/jokes.json')
       .get() (err, res, body) ->
         try

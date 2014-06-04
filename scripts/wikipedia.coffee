@@ -11,7 +11,7 @@
 #   None
 #
 # Commands:
-#   hubot wiki me <query> - Searches for <query> on Wikipedia.
+#   :wiki <query> - Searches for <query> on Wikipedia.
 #
 # Author:
 #   h3h
@@ -22,7 +22,7 @@ Select     = require("soupselect").select
 HTMLParser = require "htmlparser"
 
 module.exports = (robot) ->
-  robot.respond /(wiki)( me)? (.*)/i, (msg) ->
+  robot.hear /(wiki)( me)? (.*)/i, (msg) ->
     wikiMe robot, msg.match[3], (text, url) ->
       msg.send text
       msg.send url if url

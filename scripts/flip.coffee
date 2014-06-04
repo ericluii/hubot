@@ -5,9 +5,9 @@
 #   "flip": "~0.1.0"
 #
 # Commands:
-#   hubot flip <text> - express your anger
-#   hubot rage flip <text> - express your anger with rage
-#   hubot unflip <text>
+#   flip <text> - express your anger
+#   rage flip <text> - express your anger with rage
+#   unflip <text>
 #
 # Authors:
 #   jergason
@@ -17,7 +17,7 @@ flip = require 'flip'
 
 module.exports = (robot) ->
 
-  robot.respond /(rage )?flip( .*)?$/i, (msg) ->
+  robot.hear /(rage )?flip( .*)?$/i, (msg) ->
     if msg.match[1] == 'rage '
       guy = '(ノಠ益ಠ)ノ彡'
     else
@@ -36,7 +36,7 @@ module.exports = (robot) ->
     msg.send "#{guy} #{flipped}"
 
 
-  robot.respond /unflip( .*)?$/i, (msg) ->
+  robot.hear /unflip( .*)?$/i, (msg) ->
     toUnflip = (msg.match[1] || '').trim()
 
     if toUnflip == 'me'

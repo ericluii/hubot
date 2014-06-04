@@ -8,14 +8,14 @@
 #   None
 #
 # Commands:
-#   hubot tvshow me <show> - Show info about <show>
+#   :tvshow <show> - Show info about <show>
 #
 # Author:
 #   victorbutler
 
 xml2js = require "xml2js"
 module.exports = (robot) ->
-  robot.respond /tvshow(?: me)? (.*)/i, (msg) ->
+  robot.hear /:tvshow (.*)/i, (msg) ->
     query = encodeURIComponent(msg.match[1])
     msg.http("http://services.tvrage.com/feeds/full_search.php?show=#{query}")
       .get() (err, res, body) ->

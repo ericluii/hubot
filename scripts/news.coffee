@@ -8,14 +8,14 @@
 #   None
 #
 # Commands:
-#   hubot news - Get the latest headlines
-#   hubot news <topic> - Get the latest headlines for a specific topic
+#   :news - Get the latest headlines
+#   :news <topic> - Get the latest headlines for a specific topic
 #
 # Author:
 #   Matt McCormick
 
 module.exports = (robot) ->
-  robot.respond /news(?: me| on)?\s?(.*)/, (msg) ->
+  robot.hear /:news(?: me| on)?\s?(.*)/, (msg) ->
     query msg, (response, err) ->
       return msg.send err if err
 

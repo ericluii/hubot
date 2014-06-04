@@ -8,13 +8,13 @@
 #   None
 #
 # Commands:
-#   hubot lmgtfy <optional @username> <some query>
+#   :lmgtfy <optional @username> <some query>
 #
 # Author:
 #   phlipper
 
 module.exports = (robot) ->
-   robot.respond /lmgtfy?\s?(?:@(\w*))? (.*)/i, (msg) ->
+   robot.hear /:lmgtfy?\s?(?:@(\w*))? (.*)/i, (msg) ->
      link = ""
      link += "#{msg.match[1]}: " if msg.match[1]
      link += "http://lmgtfy.com/?q=#{escape(msg.match[2])}"

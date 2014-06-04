@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot get directions "<origin>" "<destination>" -- Shows directions between these locations
+#   :directions "<origin>" "<destination>" -- Shows directions between these locations
 #
 # Author:
 #   sleekslush
@@ -35,8 +35,8 @@ parse_directions = (body) ->
    return final_directions.join("\n")
     
 module.exports = (robot) ->
-  robot.respond /(get )?directions "((?:[^\\"]+|\\.)*)" "((?:[^\\"]+|\\.)*)"$/i, (msg) ->
-    [origin, destination] = msg.match[2..3]
+  robot.hear /:directions "((?:[^\\"]+|\\.)*)" "((?:[^\\"]+|\\.)*)"$/i, (msg) ->
+    [origin, destination] = msg.match[1..2]
 
     msg
         .http("http://maps.googleapis.com/maps/api/directions/json")

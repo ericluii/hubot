@@ -2,10 +2,10 @@
 #   Allows Hubot to do mathematics.
 #
 # Commands:
-#   hubot math me <expression> - Calculate the given expression.
-#   hubot convert me <expression> to <units> - Convert expression to given units.
+#   :math <expression> - Calculate the given expression.
+#   :convert <expression> to <units> - Convert expression to given units.
 module.exports = (robot) ->
-  robot.respond /(calc|calculate|calculator|convert|math|maths)( me)? (.*)/i, (msg) ->
+  robot.hear /:(calc|calculate|calculator|convert|math|maths)( me)? (.*)/i, (msg) ->
     msg
       .http('https://www.google.com/ig/calculator')
       .query

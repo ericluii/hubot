@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot whatis <term> - search the term on urbandictionary.com and get a random popular definition for the term.
+#   :whatis <term> - search the term on urbandictionary.com and get a random popular definition for the term.
 #
 # Author:
 #   Kevin Qiu
@@ -18,7 +18,7 @@
 jsdom = require('jsdom').jsdom
 
 module.exports = (robot) ->
-  robot.respond /whatis (.+)$/i, (msg) ->
+  robot.hear /:whatis (.+)$/i, (msg) ->
     msg
       .http('http://www.urbandictionary.com/define.php?term=' + (encodeURIComponent msg.match[1]))
       .get() (err, res, body) ->

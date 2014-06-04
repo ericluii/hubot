@@ -9,7 +9,7 @@
 #   None
 #
 # Commands:
-#   hubot reddit (me) <reddit> [limit] - Lookup reddit topic
+#   :reddit <reddit> [limit] - Lookup reddit topic
 #
 # Author:
 #   EnriqueVidal
@@ -20,7 +20,7 @@ HTMLParser  = require "htmlparser"
 lookup_site = "http://www.reddit.com/"
 
 module.exports = (robot)->
-  robot.respond /reddit( me)? ([a-z0-9\-_\.]+\/?[a-z0-9\-_\.]+)( [0-9]+)?/i, (message)->
+  robot.hear /:reddit ([a-z0-9\-_\.]+\/?[a-z0-9\-_\.]+)( [0-9]+)?/i, (message)->
     lookup_reddit message, (text)->
       message.send text
 

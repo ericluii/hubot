@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot aww - Display the picture from /r/aww
+#   :aww - Display the picture from /r/aww
 #
 # Author:
 #   eliperkins
@@ -16,8 +16,8 @@
 url = require("url")
 
 module.exports = (robot) ->
-  robot.respond /aww/i, (msg) ->
-    search = escape(msg.match[1])
+  robot.hear /:aww/i, (msg) ->
+    search = 'aww'
     msg.http('http://www.reddit.com/r/aww.json')
       .get() (err, res, body) ->
         result = JSON.parse(body)

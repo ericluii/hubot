@@ -8,7 +8,6 @@
 #   None
 #
 # Commnads:
-#   gooo+d
 #
 # Author:
 #   tbwIII

@@ -10,18 +10,18 @@
 #   None
 #
 # Commands:
-#   hubot moarcats me - links http://edgecats.net, which serves a random cat gif
-#   hubot moarcats bomb <n> - gives <n> cat gifs
+#   :cat - links http://edgecats.net, which serves a random cat gif
+#   :cat bomb <n> - gives <n> cat gifs
 #
 # Author:
 #   flores
 
 module.exports = (robot) ->
-  robot.respond /moarcats me/i, (msg) ->
+  robot.hear /:cat/i, (msg) ->
     msg.http("http://edgecats.net/random").get() (err, res, body) ->
       msg.send body
 
-  robot.respond /moarcats bomb( (\d+))?/i, (msg) ->
+  robot.hear /:cat bomb( (\d+))?/i, (msg) ->
     count = msg.match[2] || 5
     for cat in [1..count]
       msg.http("http://edgecats.net/random")

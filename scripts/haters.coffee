@@ -8,7 +8,6 @@
 #   None
 #
 # Commands:
-#   haters - Returns a random haters gonna hate url
 #
 # Author:
 #   atmos

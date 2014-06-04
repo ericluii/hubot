@@ -9,7 +9,7 @@
 #   HUBOT_9GAG_NO_GIFS (optional, skips GIFs if defined; default is undefined)
 #
 # Commands:
-#   hubot 9gag me - Returns a random meme image
+#   :9gag - Returns a random meme image
 #
 # Author:
 #   EnriqueVidal 
@@ -21,7 +21,7 @@ Select      = require( "soupselect" ).select
 HTMLParser  = require "htmlparser"
 
 module.exports = (robot)->
-  robot.respond /9gag( me)?/i, (message)->
+  robot.hear /:9gag/i, (message)->
     send_meme message, false, (title, src)->
       message.send title, src
 

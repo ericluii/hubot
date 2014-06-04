@@ -8,15 +8,15 @@
 #   None
 #
 # Commands:
-#   hubot ascii me <text> - Show text in ascii art
+#   :ascii <text> - Show text in ascii art
 #
 # Author:
 #   atmos
 
 module.exports = (robot) ->
-  robot.respond /ascii( me)? (.+)/i, (msg) ->
+  robot.hear /:ascii (.+)/i, (msg) ->
     msg
       .http("http://asciime.heroku.com/generate_ascii")
-      .query(s: msg.match[2].split(' ').join('  '))
+      .query(s: msg.match[1].split(' ').join('  '))
       .get() (err, res, body) ->
         msg.send body

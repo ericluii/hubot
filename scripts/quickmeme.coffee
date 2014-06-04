@@ -9,7 +9,6 @@
 #   None
 #
 # Commands:
-#   http://www.quickmeme.com/meme/* - Detects the url and displays the image
 #
 # Author:
 #   chrisdrackett

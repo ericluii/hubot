@@ -17,7 +17,7 @@
 jsdom = require("jsdom").jsdom
 
 module.exports = (robot) ->
-  robot.respond /git help (.+)$/i, (msg) ->
+  robot.hear /:git help (.+)$/i, (msg) ->
     topic = msg.match[1].toLowerCase()
 
     url = 'http://git-scm.com/docs/git-' + topic

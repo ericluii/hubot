@@ -9,7 +9,7 @@
 #   None
 #
 # Commands:
-#   hubot animal me - Grab a random gif from http://animalsbeingdicks.com/
+#   :animal - Grab a random gif from http://animalsbeingdicks.com/
 #
 # Author:
 #   unsay
@@ -18,7 +18,7 @@ Select     = require("soupselect").select
 HtmlParser = require "htmlparser"
 
 module.exports = (robot) ->
-  robot.respond /animal me/i, (msg) ->
+  robot.hear /:animal/i, (msg) ->
     randimalMe msg, (url) ->
       msg.send url
 
