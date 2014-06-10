@@ -25,8 +25,8 @@ class Tasks
     maxTaskNum = if @cache.length then Math.max.apply(Math,@cache.map (n) -> n.num) else 0
     maxTaskNum++
     maxTaskNum
-  add: (taskString) ->
-    task = {num: @nextTaskNum(), task: taskString}
+  add: (taskString, room_name) ->
+    task = {num: @nextTaskNum(), room: room_name, task: taskString}
     @cache.push task
     @robot.brain.data.tasks = @cache
     task
@@ -41,14 +41,15 @@ module.exports = (robot) ->
   tasks = new Tasks robot
 
   robot.hear /(:task add|:add task) (.+?)$/i, (msg) ->
-    task = tasks.add msg.match[2]
+    task = tasks.add msg.match[2] msg.message.room
     msg.send "Task added: ##{task.num} - #{task.task}"
 
   robot.hear /(:task list|:list tasks)/i, (msg) ->
     if tasks.all().length > 0
       response = ""
       for task, num in tasks.all()
-        response += "##{task.num} - #{task.task}\n"
+        if task.room == msg.message.room
+          response += "##{task.num} - #{task.task}\n"
       msg.send response
     else
       msg.send "There are no tasks"
