@@ -41,17 +41,19 @@ module.exports = (robot) ->
   tasks = new Tasks robot
 
   robot.hear /(:task add|:add task) (.+?)$/i, (msg) ->
-    task = tasks.add msg.match[2] msg.message.room
+    task = tasks.add msg.match[2], msg.message.room
     msg.send "Task added: ##{task.num} - #{task.task}"
 
   robot.hear /(:task list|:list tasks)/i, (msg) ->
-    if tasks.all().length > 0
-      response = ""
-      for task, num in tasks.all()
-        if task.room == msg.message.room
-          response += "##{task.num} - #{task.task}\n"
+    response = ""
+    count = 0
+    for task, num in tasks.all()
+      if task.room == msg.message.room
+        response += "##{task.num} - #{task.task}\n"
+        count++
+    if count > 0
       msg.send response
-    else
+    else 
       msg.send "There are no tasks"
 
   robot.hear /(:task delete|:delete task) #?(\d+)/i, (msg) ->
