@@ -20,7 +20,7 @@ module.exports = (robot) ->
        .get() (err, res, body) ->
         if res.statusCode is 200
           data = JSON.parse body
-          msg.send "http://openweathermap.org/img/w/" + data.weather[0].icon
+          msg.send "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
           msg.send data.name + ', ' + data.sys.country
           msg.send data.weather[0].description
           msg.send "Temperature: " + Math.round((data.main.temp - 273.15)*100)/100 + " degrees"
