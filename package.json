@@ -20,9 +20,9 @@
     "url": "https://github.com/github/hubot.git"
   },
   "dependencies": {
-    "hubot": ">= 2.6.0 < 3.0.0",
-    "hubot-hipchat": "^2.6.4-2",
-    "hubot-scripts": ">= 2.5.0 < 3.0.0",
+    "hubot": "*",
+    "hubot-hipchat": "*",
+    "hubot-scripts": "*",
     "scraper": "*",
     "htmlparser": "*",
     "underscore.string": "*",
@@ -30,8 +30,8 @@
     "textspark": "*",
     "request": "*",
     "cheerio": "*",
-    "sandbox": "*",
-    "underscore": "*",
+    "sandbox": "0.8.3",
+    "underscore": "1.4.4",
     "nodepie": "*",
     "jsdom": "*",
     "flip": "*",

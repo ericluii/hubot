@@ -1,6 +1,6 @@
 #!/bin/sh
 
-USER_HOME="/home/$USER"
+USER_HOME="/home/pi"
 HUBOT_ROOT="$USER_HOME/hubot"
 HUBOT_HOME="$HUBOT_ROOT/node_modules/hubot"
 DAEMON="$HUBOT_HOME/bin/hubot"

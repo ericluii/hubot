@@ -1,2 +1,4 @@
 node_modules
+npm-debug.log
+redis.log
 .DS_Store*
