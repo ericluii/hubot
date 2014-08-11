@@ -44,7 +44,9 @@ deal = [
   "http://i.imgur.com/2MTQrQf.gif",
   "http://i.imgur.com/CxhomG0.gif",
   "http://i.imgur.com/vA2UnyC.gif",
-  "http://i.imgur.com/5pMiY03.gif"
+  "http://i.imgur.com/5pMiY03.gif",
+  "http://i1.kym-cdn.com/photos/images/original/000/805/176/20d.gif",
+  "http://i.imgur.com/pHvpBxx.gif"
 ]
 
 module.exports = (robot) ->

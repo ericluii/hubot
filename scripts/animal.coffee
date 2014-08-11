@@ -9,7 +9,7 @@
 #   None
 #
 # Commands:
-#   :animal - Grab a random gif from http://animalsbeingdicks.com/
+#   :animal - Grab a random gif from animalsbeingdicks
 #
 # Author:
 #   unsay
