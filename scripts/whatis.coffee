@@ -11,7 +11,7 @@
 #   :whatis <term> - search the term on urbandictionary.com and get a random popular definition for the term.
 #
 # Author:
-#   Kevin Qiu, Harris Yip
+#   Harris Yip
 #
 # FIXME merge with urban.coffee
 
