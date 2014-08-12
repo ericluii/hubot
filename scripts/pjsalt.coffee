@@ -18,7 +18,8 @@
 salt = [
     "http://img33.imageshack.us/img33/4519/pjsalt.jpg",
     "http://whatishealthfood.net/images/health-risks-of-high-sodium-intake_1.jpg",
-    "http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-be-salty.png"
+    "http://sd.keepcalm-o-matic.co.uk/i/keep-calm-and-be-salty.png",
+    "http://imgur.com/zDuEu6W"
   ]
 
 module.exports = (robot) ->
