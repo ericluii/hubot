@@ -1,4 +1,3 @@
-
 # Description:
 #   Add salt to conversation
 #
