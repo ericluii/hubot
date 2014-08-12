@@ -1,0 +1,61 @@
+# Description:
+#   Allows macros to be added to hubot
+#
+# Dependencies:
+#   None
+#
+# Configuration:
+#   None
+#
+# Commands:
+#   :macro add <macro> <url>
+#   :macro delete <macro>
+#   :macro list - PLEASE ONLY DO THIS IN PRIVATE CHAT WITH HUBOT <3
+#
+# Author:
+#   ealui
+
+class Macros
+  constructor: (@robot) ->
+    @cache = []
+    @robot.brain.on 'loaded', =>
+      if @robot.brain.data.macros
+        @cache = @robot.brain.data.macros
+  add: (macroString, urlString) ->
+    macro = {macro: macroString, url: urlString}
+    @cache.push macro
+    @robot.brain.data.macros = @cache
+    macro
+  list: -> @cache
+  delete: (macroString) ->
+    index = @cache.map((n) -> n.macro).indexOf(macroString)
+    macro = @cache.splice(index, 1)[0]
+    @robot.brain.data.macros = @cache
+    macro
+  find: (macroString) ->
+    index = @cache.map((n) -> n.macro).indexOf(macroString)
+    macro = @cache[index]
+    macro
+
+module.exports = (robot) ->
+  macros = new Macros robot
+
+  robot.hear /:macro add (.+) (.+)/i, (msg) ->
+    macro = macros.add msg.match[1], msg.match[2]
+    msg.send "Macro added: #{macro.macro} - #{macro.url}"
+
+  robot.hear /:macro list/i, (msg) ->
+    response = ""
+    for macro in macros.list()
+      response += "#{macro.macro} - #{macro.url}\n"
+    msg.send response
+
+  robot.hear /:macro delete (.*)/i, (msg) ->
+    macroString = msg.match[1]
+    macro = macros.delete macroString
+    msg.send "Macro deleted: #{macro.macro} - #{macro.url}"
+
+  robot.hear /.*/i, (msg) ->
+    macro = macros.find msg.match[0]
+    if macro
+      msg.send macro.url
