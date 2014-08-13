@@ -1,4 +1,5 @@
 node_modules
+hubot.pid
 npm-debug.log
 redis.log
 .DS_Store*
