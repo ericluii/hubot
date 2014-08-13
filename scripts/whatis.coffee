@@ -2,7 +2,7 @@
 #   None
 #
 # Dependencies:
-#   "jsdom": "0.2.14"
+#   None
 #
 # Configuration:
 #   None
@@ -11,30 +11,22 @@
 #   :whatis <term> - search the term on urbandictionary.com and get a random popular definition for the term.
 #
 # Author:
-#   Kevin Qiu
+#   Harris Yip
 #
 # FIXME merge with urban.coffee
 
-jsdom = require('jsdom').jsdom
-
 module.exports = (robot) ->
-  robot.hear /:whatis (.+)$/i, (msg) ->
-    msg
-      .http('http://www.urbandictionary.com/define.php?term=' + (encodeURIComponent msg.match[1]))
-      .get() (err, res, body) ->
-        window = (jsdom body, null,
-          features :
-            FetchExternalResources : false
-            ProcessExternalResources : false
-            MutationEvents : false
-            QuerySelector : false
-        ).createWindow()
+  robot.hear /:whatis (.*)/i, (msg) ->
+    urbanMe msg, msg.match[1], (entries) ->
+      msg.send entry for entry in entries
 
-        $ = require('jquery').create(window)
-
-        definitions = []
-        $(".meaning").each (idx, item) ->
-          definitions.push $(item).text()
-
-        msgText = if definitions.length==0 then "No definition found." else (msg.random definitions)
-        msg.send msgText
+urbanMe = (msg, query, cb) ->
+  msg.http('http://api.urbandictionary.com/v0/define?term=' + query)
+    .get() (err, res, body) ->
+      object = JSON.parse(body)
+      if object.list.length > 0 
+      	rv = []
+      	rv.push entry.definition for entry in object.list
+      	cb rv
+      else 
+      	cb ["No results found"]
