@@ -13,7 +13,7 @@
 #   :macro list - PLEASE ONLY DO THIS IN PRIVATE CHAT WITH HUBOT <3
 #
 # Author:
-#   ealui
+#   ealui, Harris Yip
 
 class Macros
   constructor: (@robot) ->
@@ -56,6 +56,10 @@ module.exports = (robot) ->
     msg.send "Macro deleted: #{macro.macro} - #{macro.url}"
 
   robot.hear /.*/i, (msg) ->
-    macro = macros.find msg.match[0]
-    if macro
-      msg.send macro.url
+    macrosList = macros.list()
+    for curMacro in macrosList
+      do  (curMacro) ->
+        message = msg.match[0]
+        found = message.match(curMacro.macro)
+        if found
+          msg.send curMacro.url
