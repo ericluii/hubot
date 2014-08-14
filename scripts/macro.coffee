@@ -58,8 +58,8 @@ module.exports = (robot) ->
   robot.hear /.*/i, (msg) ->
     macrosList = macros.list()
     for curMacro in macrosList
-      do  (curMacro) ->
-        message = msg.match[0]
-        found = message.match(curMacro.macro)
-        if found
-          msg.send curMacro.url
+      message = msg.match[0]
+      found = message.match(curMacro.macro)
+      if found
+        msg.send curMacro.url
+        break
