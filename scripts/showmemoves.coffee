@@ -15,17 +15,16 @@
 #   TerrenceLeung
 
 showmemoves = [
-  "http://www.gfycat.com/NeatLiveDoctorfish",
-  "http://i.imgur.com/sxvOtNn.jpg",
-  "http://gfycat.com/BruisedLividDiscus",
-  "http://www.gfycat.com/OddBountifulAmericanalligator",
   "http://i.imgur.com/fkm9aDu.gif",
-  "http://www.gfycat.com/PastelPhonyFlies",
-  "http://www.gfycat.com/ThirdPitifulKatydid",
-  "http://www.gfycat.com/EuphoricThornyAplomadofalcon",
-  "http://www.gfycat.com/BowedHighGlobefish",
   "http://i.imgur.com/7VFK8RN.gif",
-  "http://www.gfycat.com/BlackSizzlingKagu"
+  "http://giant.gfycat.com/NeatLiveDoctorfish.gif",
+  "http://giant.gfycat.com/BruisedLividDiscus.gif",
+  "http://giant.gfycat.com/OddBountifulAmericanalligator.gif",
+  "http://giant.gfycat.com/PastelPhonyFlies.gif",
+  "http://giant.gfycat.com/ThirdPitifulKatydid.gif",
+  "http://giant.gfycat.com/EuphoricThornyAplomadofalcon.gif",
+  "http://giant.gfycat.com/BowedHighGlobefish.gif",
+  "http://giant.gfycat.com/BlackSizzlingKagu.gif"
 ]
 
 module.exports = (robot) ->
