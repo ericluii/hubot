@@ -10,7 +10,7 @@
 # Commands:
 #   :macro add <macro> <url>
 #   :macro delete <macro>
-#   :macro list - PLEASE ONLY DO THIS IN PRIVATE CHAT WITH HUBOT <3
+#   :macro list - http://macros.ealui.com/
 #
 # Author:
 #   ealui, Harris Yip
