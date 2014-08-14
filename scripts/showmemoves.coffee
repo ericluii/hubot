@@ -16,7 +16,7 @@
 
 showmemoves = [
   "http://i.imgur.com/fkm9aDu.gif",
-  "http://i.imgur.com/7VFK8RN.gif",
+  "http://i.imgur.com/7VFK8RN.gif"
 ]
 
 module.exports = (robot) ->
