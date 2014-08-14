@@ -26,7 +26,7 @@ module.exports = (robot) ->
         else if object.total < 3
           for movie in object.movies 
             msg.send movie.title + " - " + movie.year
-            msg.send movie.posters.thumbnail.replace /tmb/, "det"
+            msg.send movie.posters.thumbnail.replace /_tmb/, "_det"
             msg.send movie.synopsis
             msg.send "Audience Score: " + movie.ratings.audience_score 
             msg.send "Critic Score: " + movie.ratings.critics_score 
