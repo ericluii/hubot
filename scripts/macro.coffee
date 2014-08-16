@@ -55,6 +55,9 @@ module.exports = (robot) ->
     macro = macros.delete macroString
     msg.send "Macro deleted: #{macro.macro} - #{macro.url}"
 
+  robot.hear /:macro url/i, (msg) ->
+    msg.send "http://macros.ealui.com"
+    
   robot.hear /.*/i, (msg) ->
     macrosList = macros.list()
     for curMacro in macrosList
