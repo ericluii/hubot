@@ -1,5 +1,5 @@
 # Description:
-#   Allows macros to be added to hubot
+#   Allows macros to be added and used with hubot
 #
 # Dependencies:
 #   None
@@ -10,7 +10,8 @@
 # Commands:
 #   :macro add <macro> <url>
 #   :macro delete <macro>
-#   :macro list - http://macros.ealui.com/
+#   :macro list - list all the macros currently implemented
+#   :macro url - print http://macros.ealui.com/
 #
 # Author:
 #   ealui, Harris Yip
@@ -54,6 +55,9 @@ module.exports = (robot) ->
     macroString = msg.match[1]
     macro = macros.delete macroString
     msg.send "Macro deleted: #{macro.macro} - #{macro.url}"
+
+  robot.hear /:macro url/i, (msg) ->
+    msg.send "http://macros.ealui.com"
 
   robot.hear /.*/i, (msg) ->
     macrosList = macros.list()
