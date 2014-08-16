@@ -58,7 +58,7 @@ module.exports = (robot) ->
 
   robot.hear /:macro url/i, (msg) ->
     msg.send "http://macros.ealui.com"
-
+    
   robot.hear /.*/i, (msg) ->
     macrosList = macros.list()
     for curMacro in macrosList
