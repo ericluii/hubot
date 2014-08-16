@@ -24,7 +24,8 @@ showmemoves = [
   "http://giant.gfycat.com/ThirdPitifulKatydid.gif",
   "http://giant.gfycat.com/EuphoricThornyAplomadofalcon.gif",
   "http://giant.gfycat.com/BowedHighGlobefish.gif",
-  "http://giant.gfycat.com/BlackSizzlingKagu.gif"
+  "http://giant.gfycat.com/BlackSizzlingKagu.gif",
+  "http://puu.sh/aTkJ6/9eb9ccc9e6.jpg"
 ]
 
 module.exports = (robot) ->
