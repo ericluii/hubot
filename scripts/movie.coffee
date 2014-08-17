@@ -31,10 +31,12 @@ module.exports = (robot) ->
             msg.send "Audience Score: " + movie.ratings.audience_score 
             msg.send "Critic Score: " + movie.ratings.critics_score 
             msg.send movie.links.alternate
+            msg.send "\n"
         else
           for movie in object.movies 
             msg.send movie.title + " - " + movie.year
             msg.send movie.synopsis
             msg.send "Audience Score: " + movie.ratings.audience_score 
             msg.send "Critic Score: " + movie.ratings.critics_score 
-            msg.send movie.links.alternate
+            msg.send "\n"
+
