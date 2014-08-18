@@ -20,8 +20,11 @@
 
 module.exports = (robot) ->
   robot.hear /:movieBoxOffice(\s?(\d*))/i, (msg) ->
-    number = (msg.match[1] || 5).replace /^\s/, ""
-    msg.send number
+    if (msg.match[1] == '')
+      number = 5
+    else 
+      number = msg.match[1].replace /^\s/, ""
+
     if number > 50
       msg.send "Only up to 50 allowed! Also, DO NOT FLOOD THE CHAT"
       return
