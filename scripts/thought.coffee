@@ -24,6 +24,6 @@ module.exports = (robot) ->
         msg.http('http://andymatthews.net/thought/')
             # and makes an http get call
             .get() (error, response, body) ->
-                results = JSON.parse body
+                results = JSON.parse(body)
                 # passes back the complete reponse
-                msg.send results.thought.thought
+                msg.send results.thought
