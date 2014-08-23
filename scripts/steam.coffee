@@ -38,11 +38,12 @@ module.exports = (robot) ->
                 msg.http("http://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v1?key=C7ABEE6B17095BC1F9BC822CFD1C7D08&match_id=" + match1)
                   .get() (err, res, body) ->
                     match = JSON.parse(body).result
+                    printString = ''
                     if match.radiant_win
-                      msg.send "RADIANT WIN"
+                      printString = printString + "RADIANT WIN\n"
                     else
-                      msg.send "DIRE WIN"
-                    msg.send "\nRADIANT:"
+                      printString = printString + "DIRE WIN\n"
+                    printString = printString +  "RADIANT:\n"
                     direBool = false
                     msg.http("http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=C7ABEE6B17095BC1F9BC822CFD1C7D08")
                       .get() (err, res, body) ->
@@ -50,17 +51,18 @@ module.exports = (robot) ->
                         for player in match.players
                           if player.player_slot > 4 && !direBool
                             direBool = true
-                            msg.send "\nDIRE:"
-                          msg.send "    " + player.account_id
+                            printString = printString + "\nDIRE:\n"
+                          printString = printString +  "\t" + player.account_id + "\n"
                           for hero in heroes
                             if player.hero_id == hero.id
                               heroName = hero.name.replace /npc_dota_hero_/, ""
                               heroName = heroName.replace /_/, " "
                               heroName = (heroName.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
-                              msg.send "        " + heroName  
+                              printString = printString + "\t\t" + heroName  + "\n"
+                              printString = printString + "\t\t" + player.kills + "/" + player.deaths + "/" + player.assists + "\n"
+                              msg.send printString
                               break
-                          msg.send "        " + player.kills + "/" + player.deaths + "/" + player.assists 
               else 
                 msg.send result.statusDetail
         else
-          msg.send response.msg
+          msg.send response.message
