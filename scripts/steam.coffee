@@ -52,16 +52,16 @@ module.exports = (robot) ->
                           if player.player_slot > 4 && !direBool
                             direBool = true
                             printString = printString + "\nDIRE:\n"
-                          printString = printString +  "\t" + player.account_id + "\n"
+                          printString = printString +  "\t" + player.account_id + " - "
                           for hero in heroes
                             if player.hero_id == hero.id
                               heroName = hero.name.replace /npc_dota_hero_/, ""
                               heroName = heroName.replace /_/, " "
                               heroName = (heroName.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
-                              printString = printString + "\t\t" + heroName  + "\n"
-                              printString = printString + "\t\t" + player.kills + "/" + player.deaths + "/" + player.assists + "\n"
-                              msg.send printString
+                              printString = printString + heroName  + " - "
+                              printString = printString + player.kills + "/" + player.deaths + "/" + player.assists + "\n"
                               break
+                        msg.send printString
               else 
                 msg.send result.statusDetail
         else
