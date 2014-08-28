@@ -56,7 +56,5 @@ phrases = [
 ]
 
 module.exports = (robot) ->
-  name_regex = new RegExp("#{robot.name}\\?$", "i")
-
   robot.hear "#{robot.name}", (msg) ->
     msg.send msg.random phrases
