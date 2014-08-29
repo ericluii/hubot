@@ -20,14 +20,15 @@ module.exports = (robot) ->
        .get() (err, res, body) ->
         if res.statusCode is 200
           data = JSON.parse body
-          msg.send "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
-          msg.send data.name + ', ' + data.sys.country
-          msg.send data.weather[0].description
-          msg.send "Temperature: " + Math.round((data.main.temp - 273.15)*100)/100 + " degrees"
-          msg.send "High: " + Math.round((data.main.temp_max - 273.15)*100)/100 + " degrees"
-          msg.send "Low: " + Math.round((data.main.temp_min - 273.15)*100)/100 + " degrees"
-          msg.send "Humidity: " + data.main.humidity + "%"
-          msg.send "Wind Speed: " + data.wind.speed + " mps"
+          output = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\n"
+          output += data.name + ', ' + data.sys.country + '\n'
+          output += data.weather[0].description + '\n'
+          output += "Temperature: " + Math.round((data.main.temp - 273.15)*100)/100 + " degrees\n"
+          output += "High: " + Math.round((data.main.temp_max - 273.15)*100)/100 + " degrees\n"
+          output += "Low: " + Math.round((data.main.temp_min - 273.15)*100)/100 + " degrees\n"
+          output += "Humidity: " + data.main.humidity + "%\n"
+          output += "Wind Speed: " + data.wind.speed + " mps"
+          msg.send output
         else
           msg.send "Request Failed to Complete"
 
@@ -36,13 +37,14 @@ module.exports = (robot) ->
        .get() (err, res, body) ->
         if res.statusCode is 200
           data = JSON.parse body
-          msg.send "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
-          msg.send data.name + ', ' + data.sys.country
-          msg.send data.weather[0].description
-          msg.send "Temperature: " + Math.round((data.main.temp - 273.15)*100)/100 + " degrees"
-          msg.send "High: " + Math.round((data.main.temp_max - 273.15)*100)/100 + " degrees"
-          msg.send "Low: " + Math.round((data.main.temp_min - 273.15)*100)/100 + " degrees"
-          msg.send "Humidity: " + data.main.humidity + "%"
-          msg.send "Wind Speed: " + data.wind.speed + " mps"
+          output = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png\n"
+          output += data.name + ', ' + data.sys.country + '\n'
+          output += data.weather[0].description + '\n'
+          output += "Temperature: " + Math.round((data.main.temp - 273.15)*100)/100 + " degrees\n"
+          output += "High: " + Math.round((data.main.temp_max - 273.15)*100)/100 + " degrees\n"
+          output += "Low: " + Math.round((data.main.temp_min - 273.15)*100)/100 + " degrees\n"
+          output += "Humidity: " + data.main.humidity + "%\n"
+          output += "Wind Speed: " + data.wind.speed + " mps"
+          msg.send output
         else
           msg.send "Request Failed to Complete"
