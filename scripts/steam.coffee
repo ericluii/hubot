@@ -24,6 +24,14 @@ module.exports = (robot) ->
           msg.send response.steamid
         else
           msg.send response.message
+  robot.hear /:steamID64 (.*)/i, (msg) ->
+    msg.http("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=C7ABEE6B17095BC1F9BC822CFD1C7D08&vanityurl=" + msg.match[1])
+      .get() (err, res, body) ->
+        response = JSON.parse(body).response
+        if response.success == 1
+          msg.send SixFourBitID(response.steamid.toString(), msg)
+        else
+          msg.send response.message
   robot.hear /:DLM (.*)/i, (msg) ->
     msg.http("http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=C7ABEE6B17095BC1F9BC822CFD1C7D08&vanityurl=" + msg.match[1])
       .get() (err, res, body) ->
@@ -40,9 +48,10 @@ module.exports = (robot) ->
                     match = JSON.parse(body).result
                     printString = ''
                     if match.radiant_win
-                      printString = printString + "RADIANT WIN\n"
+                      printString = printString + "RADIANT WIN - "
                     else
-                      printString = printString + "DIRE WIN\n"
+                      printString = printString + "DIRE WIN - "
+                    printString = printString + epochToHuman(match.start_time) + "\n"
                     printString = printString +  "RADIANT:\n"
                     direBool = false
                     msg.http("http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key=C7ABEE6B17095BC1F9BC822CFD1C7D08")
@@ -100,3 +109,7 @@ SixFourBitID = (ThreeTwoBitID, msg) ->
     carryOver = Math.floor(value/10)
     newID = mod + newID
   return newID  
+
+epochToHuman = (epoch) ->
+  date = new Date(epoch * 1000)
+  return date.toLocaleString() 
