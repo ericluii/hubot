@@ -49,20 +49,22 @@ module.exports = (robot) ->
           printMovie(object.movies, msg)
 
 printMovie = (movies, msg) ->
+  movieText = ""
   for movie in movies
-    msg.send movie.title + " - " + movie.year
-    msg.send movie.synopsis
-    msg.send "Audience Score: " + movie.ratings.audience_score 
-    msg.send "Critic Score: " + movie.ratings.critics_score 
-    msg.send "\n"
-
+    movieText += movie.title + " - " + movie.year + "\n"
+    movieText += movie.synopsis + "\n"
+    movieText += "Audience Score: " + movie.ratings.audience_score + "\n"
+    movieText += "Critic Score: " + movie.ratings.critics_score + "\n"
+    movieText += "\n"
+  msg.send(movieText)
 printMoviePoster = (movies, msg) ->
+  movieText = ""
   for movie in movies 
-    msg.send movie.title + " - " + movie.year
-    msg.send movie.posters.thumbnail.replace /_tmb/, "_det"
-    msg.send movie.synopsis
-    msg.send "Audience Score: " + movie.ratings.audience_score 
-    msg.send "Critic Score: " + movie.ratings.critics_score 
-    msg.send movie.links.alternate
-    msg.send "\n"
-
+    movieText += movie.title + " - " + movie.year + "\n"
+    movieText += movie.posters.thumbnail.replace /_tmb/, "_det" + "\n"
+    movieText += movie.synopsis + "\n"
+    movieText += "Audience Score: " + movie.ratings.audience_score + "\n"
+    movieText += "Critic Score: " + movie.ratings.critics_score + "\n"
+    movieText += movie.links.alternate + "\n"
+    movieText += "\n"
+  msg.send(movieText)
