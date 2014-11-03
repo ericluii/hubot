@@ -61,7 +61,8 @@ printMoviePoster = (movies, msg) ->
   movieText = ""
   for movie in movies 
     movieText += movie.title + " - " + movie.year + "\n"
-    movieText += movie.posters.thumbnail.replace /_tmb/, "_det" + "\n"
+    movieText += movie.posters.thumbnail.replace /_tmb/, "_det"
+    movieText += "\n"
     movieText += movie.synopsis + "\n"
     movieText += "Audience Score: " + movie.ratings.audience_score + "\n"
     movieText += "Critic Score: " + movie.ratings.critics_score + "\n"
